@@ -41,12 +41,12 @@ class _LoginState extends State<Login> {
                       textField(
                           "Email",
                           "Vous devez renseigner une adresse Email",
-                          _email,
+                          "email",
                           false),
                       textField(
                           "Mot de passe",
                           "Vous devez renseigner un mot de passe",
-                          _password,
+                          "password",
                           true),
                       button("CONNEXION"),
                       ThemeText.simpleText(
@@ -58,8 +58,9 @@ class _LoginState extends State<Login> {
 
   void _submit() {
     final form = _formKey.currentState;
+    print(this._email);
     if (form.validate()) {
-         Api(_email, _email).getApi();
+         Api(_email, _password).getApi();
     }
   }
 
@@ -84,7 +85,7 @@ class _LoginState extends State<Login> {
   }
 
   Container textField(
-      String hintText, String textEmptyMessage, String textInput, obscureText) {
+      String hintText, String textEmptyMessage, String field, obscureText) {
     return Container(
       margin: new EdgeInsets.symmetric(vertical: 15.0),
       width: isLargeScreen
@@ -101,8 +102,14 @@ class _LoginState extends State<Login> {
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(15.0),
         ),
-        onSaved: (value) => textInput = value,
-        validator: (value) {
+        onChanged: (String value) {
+          if(field == "email") {
+            this._email = value;
+          } else {
+            this._password = value;
+          }
+        },
+        validator: (String value) {
           if (value.isEmpty) {
             return textEmptyMessage;
           }
