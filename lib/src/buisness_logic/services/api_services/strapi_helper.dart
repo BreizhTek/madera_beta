@@ -10,18 +10,18 @@ class Api  {
 
   Strapi _strapiClient;
 
-  Api(){
-    Initialize();
+  Api(String user, String password){
+    Initialize(user, password);
   }
 
  Strapi getApi(){
     return _strapiClient;
   }
 
-  static Future Initialize() async {
+  static Future Initialize(String user, String password) async {
 
     final _strapiClient = Strapi.newClient();
-    final token = await _strapiClient.http.post('http://telougat.space:1337/auth/local',  data: {'identifier': 'Timothé', 'password': 'Azerty123'});
+    final token = await _strapiClient.http.post('http://telougat.space:1337/auth/local',  data: {'identifier': user, 'password': password});
     print(token);
 
   }
