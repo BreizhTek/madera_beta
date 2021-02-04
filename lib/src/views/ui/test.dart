@@ -22,7 +22,7 @@ class _testState extends State<Test> {
 
   @override
   Widget build(BuildContext context) {
-   Strapi api = Api().getApi();
+   // Strapi api = Api().getApi();
     return Scaffold();
   }
 

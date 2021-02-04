@@ -5,5 +5,5 @@ import 'package:madera_prototype/src/views/ui/test.dart';
 final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
   "/": (BuildContext context) => Login(),
   "/test": (BuildContext context) => Test(),
-  // "/commercial_home": (BuildContext context) => Commercial(),
+  // "/commercial": (BuildContext context) => Commercial(),
 };
